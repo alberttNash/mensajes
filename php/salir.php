@@ -18,10 +18,10 @@
  <a href="#" class="logo"></a>
   <p class="call">442-2274400<br /><span>ejemplo@comunicateITQ.com</span></p>
   <ul id="menu">
-   <li><a href="index.html">Inicio</a></li>
-   <li><a href="vermensjes.php">Mensajes</a></li>
-   <li><a href="eventos.html">Eventos</a></li>
-   <li><a href="ligas.html">Ligas</a></li>
+   <li><a href="index.php">Inicio</a></li>
+   <li><a href="php/vermensajes.php">Mensajes</a></li>
+   <li><a href="#">Eventos</a></li>
+   <li><a href="#">Ligas</a></li>
    <li class="ml"><a href="http://www.Sisteqmas.html">Sistqmas</a></li>
    <li><a href="http://www.itq.edu.mx">ITQ</a></li>
    <li><a href="http://www.facebook.com/mensajes.itq">Facebook</a></li>

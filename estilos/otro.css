@@ -53,7 +53,7 @@ a											{text-decoration:none}
 
 body										{background:url(../images/bodyBg.png)}
 .centerAlign								{width:940px; margin:0 auto; position:relative}
-.logo										{width:113px; height:182px; float:left; position:absolute; left:50%; top:0; margin-left:-56px; background:url(../images/redecso.png) no-repeat}
+.logo										{width:100%; height:100%; float:left; position:absolute; left:50%; top:0; margin-left:-56px; background:url(../images/redecso.png) no-repeat}
 .call										{width:auto; float:right; margin-top:29px; padding:0 0 10px 35px; font-family:Georgia, "Times New Roman", Times, serif; font-size:22px; color:#4d656f; line-height:26px; background:url(../images/phone.png) no-repeat left 50%}
 .call span									{font-size:10px; line-height:10px}
 #menu										{width:942px; height:81px; float:left; margin-top:27px; background:url(../images/menuBg.png) no-repeat}
