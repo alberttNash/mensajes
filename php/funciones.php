@@ -46,7 +46,7 @@ function mensajes_respuesta($padre,$link){
 	else{
 	
 	while($muestra=mysqli_fetch_array($resultado)){
-		echo "".utf8_encode($muestra['descripcion'])."</br></span>";
+		echo "".utf8_encode($muestra['descripcion'])."<br><a href='contesta_mensaje.php?id_padre=".$muestra['id_mensaje']."'> Contestar</a></br></span>";
 	}
 
 	}
@@ -69,6 +69,15 @@ function ver_tipo_usuario($con){
 }
 
 function validar(){
+	if(!isset($_SESSION['login'])){
+		header("location:sinacceso.php");
+	}
+	else{
+		return true;
+	}
+}
+
+function validar_index(){
 	if(!isset($_SESSION['login'])){
 		header("location:php/sinacceso.php");
 	}

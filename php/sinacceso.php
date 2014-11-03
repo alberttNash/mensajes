@@ -17,10 +17,10 @@
 	<div class="centerAlign">
 		<a href="index.php" class="logo"></a>
 		<ul id="menu">
-			<li><a href="index.php">Inicio</a></li>
+			<li><a href="../index.php">Inicio</a></li>
 			<li><a href="vermensajes.php">Mensajes</a></li>
-			<li><a href="eventos.html">Eventos</a></li>
-			<li><a href="ligas.html">Ligas</a></li>
+			<li><a href="#">Eventos</a></li>
+			<li><a href="#">Ligas</a></li>
 			<li class="ml"><a href="http://www.Sisteqmas.html">Sistqmas</a></li>
 			<li><a href="http://www.itq.edu.mx">ITQ</a></li>
 			<li><a href="http://www.facebook.com/mensajes.itq">Facebook</a></li>

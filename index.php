@@ -37,7 +37,7 @@
 			<p><img src="images/iconmsg.png" alt="" />
 			
 			<?php
-				//validar();
+				validar_index();
 				mostrar_mensajes_inicio($con);
 			?>
 			<a href="php/vermensajes.php" class="view">Ver más</a>
