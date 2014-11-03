@@ -1,5 +1,5 @@
 <?php
-    require "/php/funciones.php";
+    require "funciones.php";
 	$con=conectar();
 	session_start();
 	
@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>ITQ Comunica</title>
-<link href="estilos/otro.css" rel="stylesheet" type="text/css" />
+<link href="../estilos/otro.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -18,8 +18,8 @@
  <a href="#" class="logo"></a>
   <p class="call">442-2274400<br /><span>ejemplo@comunicateITQ.com</span></p>
   <ul id="menu">
-   <li><a href="index.html">Inicio</a></li>
-   <li><a href="vermensjes.php">Mensajes</a></li>
+   <li><a href="index.php">Inicio</a></li>
+   <li><a href="vermensajes.php">Mensajes</a></li>
    <li><a href="eventos.html">Eventos</a></li>
    <li><a href="ligas.html">Ligas</a></li>
    <li class="ml"><a href="http://www.Sisteqmas.html">Sistqmas</a></li>
@@ -27,7 +27,7 @@
    <li><a href="http://www.facebook.com/mensajes.itq">Facebook</a></li>
    <li><a href="http://www.titter.com/mensajes.itq">Twitter</a></li>
   </ul>
-  <p class="t1">"La Tierra <span>será </span> como sean los hombres."</p>
+  <p class="t1">"La Tierra será como sean los hombres."</p>
   <h1>~ Comunicate con nostros ~<br /> Avisos.</h1>
   <p class="cnt">Fusce ultrices tincidunt mauris, vitae ornare felis varius vehicula. Nullam tincidunt dignissim erat in tempus. Vestibulum hendrerit, magna at mattis bibendum, dolor nibh congue risus, eget laoreet sapien sapien non nulla. Morbi molestie blandit orci suscipit pulvinar. Curabitur quis erat at lectus feugiat placerat.</p>
   <a href="#" class="dl"></a>
@@ -35,7 +35,8 @@
   <div class="smallWrap first">
    <h2>Mensajes Recientes</h2>
    <p><img src="images/blankPic.png" alt="" /><?php 
-		$query = "select * from usuarios where nombre_corto = '".$_POST['name']."' and contrasena = '".md5($_POST['contra'])."'";
+		print_r($_POST);
+		$query = "select * from usuarios where nombre_corto = '".$_POST['name']."' and contrasena = '".md5($_POST['id'])."'";
 		if(!$resultado=mysqli_query($con,$query)){
 			echo "ERROR ".mysqli_error($con);
 		}
@@ -46,7 +47,7 @@
 			$_SESSION['nombre_corto']=$muestra['nombre_corto'];
 			$_SESSION['tipo_usuario']=$muestra['id_tipo_usuario'];
 			print_r($_SESSION);
-			echo "Bienvenido ".$_SESSION['noombre_largo'];
+			echo "Bienvenido ".$_SESSION['nombre_largo'];
 		}
    ?>
    <a href="php/vermensajes.php" class="view">Ver más</a>

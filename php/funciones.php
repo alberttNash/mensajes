@@ -1,6 +1,6 @@
 <?php
 function conectar(){
-	$conecta=mysqli_connect("localhost", "red_itq", "09141133", "red_itq");
+	$conecta=mysqli_connect("localhost", "red_itq", "10141786", "red_itq");
 	if(!$conecta) {echo "Error".mysqli_connect_error($conecta). "no.".mysqli_connect_errno($conecta);}
 	else {
 		return $conecta;
@@ -55,7 +55,7 @@ function mensajes_respuesta($padre,$link){
 	
 }
 function ver_tipo_usuario($con){
-	$query="select * from tipo_usuarios";
+	$query="select * from tipo_usuario";
 	if (!$resultado=mysqli_query($con,$query)) {echo "Error". mysqli_error($con);}
 	else{
 	
@@ -69,41 +69,13 @@ function ver_tipo_usuario($con){
 }
 
 function validar(){
-	if(!isset($_SESSION['login']){
-		header("location:sinacceso.php");
+	if(!isset($_SESSION['login'])){
+		header("location:php/sinacceso.php");
 	}
 	else{
 		return true;
 	}
-
-function salir(){
-	session_destroy();
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function salir(){
+	session_destroy();	
+}

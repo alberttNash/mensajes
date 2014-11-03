@@ -33,7 +33,9 @@
   <hr />
   <div class="smallWrap first">
    <h2>Mensajes Recientes</h2>
-   <p><img src="images/blankPic.png" alt="" /><?php ver_tipo_usuario($con);
+   <p><img src="images/blankPic.png" alt="" />
+   <?php 
+		ver_tipo_usuario($con);
    ?>
    <a href="php/vermensajes.php" class="view">Ver más</a>
   </div>
