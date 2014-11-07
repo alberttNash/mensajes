@@ -34,20 +34,66 @@
 		<div class="smallWrap first">
 			<h2>Mensajes Recientes</h2>
 			<p><img src="images/blankPic.png" alt="" />
-			<h1> NECESITAS INICIAR SESION</h1>
-			<a href="php/vermensajes.php" class="view">Ver más</a>
+			<?php 
+			
+				if( isset($_GET['autenticado']) and $_GET['autenticado']=='0'){
+					//print_r($_GET);
+					echo "<h1>DATOS ERRÓNEOS</h1>";
+				}
+				else{
+					if(isset($_GET['autenticado']) and $_GET['autenticado']=='1'){
+						header("location: ../index.php");
+					}
+					else{
+						//print_r($_GET);
+						echo "<h1>NECESITAS INICIAR SESION</h1>";
+					}
+				}
+			
+			?>
+			
+			<a href="vermensajes.php" class="view">Ver más</a>
 		</div>
-
+		
+		<!--
 		<div class="smallWrap">
 			<h2>Entrar</h2>
 			<p><img src="images/blankPic.png" alt="" />
-			<form class="form1" method="post" action="entrar.php">
+			<form class="form1" method="post" action="entrar.php?origen=sinacceso.php">
 				<p><i>Los Campos son obligados</i></p>
 				Usuario<input name="name" type="text" /><br>
 				Contraseña<input name="id" type="password" />
 				<input name="login" type="submit" value="Entrar" />
 			</form>
-		</div>
+		</div>-->
+		<?php 
+			
+			if(!(($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null))){
+				//print_r($_SESSION);
+				echo "<div class=smallWrap>	
+						<h2>Entrar</h2>
+						<p><img src=../images/blankPic.png alt=icono />
+						<form class=form1 method=post action=entrar.php?origen=sinacceso.php>
+							<p><i>Los Campos son obligados</i></p>
+							Usuario<input name=name type=text /><br>
+							Contraseña<input name=id type=password />
+							<input name=btnEn type=submit value=Entrar />
+						</form>
+					</div>";
+				}
+			else{
+				//print_r($_SESSION);
+				echo "<div class=smallWrap>	
+						<h2>Salir</h2>
+						<p><img src=../images/blankPic.png alt=icono />
+						<form class=form1 method=post action=salir.php>
+							<input name=btnS type=submit value=Salir />
+						</form>
+					</div>";
+				
+				}
+	?>
+
 		<hr />
 		<p class="copy">© Copyright Información.<br /></p>
 		<ul class="foot">

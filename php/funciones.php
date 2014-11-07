@@ -30,7 +30,10 @@ function mostrar_mensajes($con){
 	
 	while($muestra=mysqli_fetch_array($resultado)){
 		echo "<span class='marker'>Tema:".$muestra['asunto']."<br/></span>";
-		echo "".utf8_encode($muestra['descripcion'])."<a href='contesta_mensaje.php?id_padre=".$muestra['id_mensaje']."'> Contestar</a><br><a href='ver_respuesta_mensaje.php?id=".$muestra['id_mensaje']."'> Ver respuestas</a><br>";
+		echo "".utf8_encode($muestra['descripcion'])."<a href='contesta_mensaje.php?id_padre=".$muestra['id_mensaje']."'> Contestar</a>
+			 <br><a href='ver_respuesta_mensaje.php?id=".$muestra['id_mensaje']."'> Ver respuestas</a>
+			 <br><a href='#'> Eliminar</a>
+			 <br><a href='#'> Modificar</a>";
 		//mensajes_respuesta($muestra['id_mensaje'],$con);
 	}
 
@@ -69,7 +72,9 @@ function ver_tipo_usuario($con){
 }
 
 function validar(){
-	if(!isset($_SESSION['login'])){
+	print_r($_SESSION['login']);
+	echo "<br>";
+	if(!$_SESSION['login']){
 		header("location:sinacceso.php");
 	}
 	else{
@@ -78,7 +83,9 @@ function validar(){
 }
 
 function validar_index(){
-	if(!isset($_SESSION['login'])){
+	print_r($_SESSION['login']);
+	echo "<br>";
+	if(!$_SESSION['login']){
 		header("location:php/sinacceso.php");
 	}
 	else{

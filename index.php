@@ -37,6 +37,7 @@
 			<p><img src="images/iconmsg.png" alt="" />
 			
 			<?php
+				
 				validar_index();
 				mostrar_mensajes_inicio($con);
 			?>
@@ -48,7 +49,7 @@
 			<p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
 			<a href="#" class="view">Más</a>
 		</div>
-		
+		<!--
 		<div class="smallWrap">	
 						<h2>Entrar</h2>
 						<p><img src="images/blankPic.png" alt="" />
@@ -58,34 +59,33 @@
 							Contraseña<input name="id" type="text" />
 							<input name="" type="submit" value="Entrar" />
 						</form>
-		</div>
+		</div>-->
 		
-		<?php /*
-			if(!isset($_SESSION['login'])){
-				echo "<div class="smallWrap">	
+		<?php 
+			if(!(($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null))){
+				echo "<div class=smallWrap>	
 						<h2>Entrar</h2>
-						<p><img src="images/blankPic.png" alt="" />
-						<form class="form1" method="post" action="entrar.php">
+						<p><img src=images/blankPic.png alt=icono />
+						<form class=form1 method=post action=entrar.php?origen=../index.php>
 							<p><i>Los Campos son obligados</i></p>
-							Usuario<input name="name" type="text" /><br>
-							Contraseña<input name="id" type="text" />
-							<input name="" type="submit" value="Entrar" />
+							Usuario<input name=name type=text /><br>
+							Contraseña<input name=id type=text />
+							<input name=btnEn type=submit value=Entrar />
 						</form>
-					</div>"
+					</div>";
 				}
 			else{
-				echo "<div class="smallWrap">	
+				echo "<div class=smallWrap>	
 						<h2>Salir</h2>
-						<p><img src="images/blankPic.png" alt="" />
-						<form class="form1" method="post" action="salir.php">
-							<p><i>Los Campos son obligados</i></p>
-							Usuario<input name="name" type="text" /><br>
-							Contraseña<input name="id" type="text" />
-							<input name="" type="submit" value="Entrar" />
+						<p><img src=images/blankPic.png alt=icono />
+						<form class=form1 method=post action=php/salir.php>
+							<input name=btnS type=submit value=Salir />
 						</form>
-					</div>"
-			}*/
-		?>
+					</div>";
+				
+				}
+	?>
+
 		
 		<hr />
 		<p class="copy">© Copyright Información.<br /></p>

@@ -39,16 +39,31 @@
    
 		</div>
   
-		<div class="smallWrap2">
-			<h2>Entrar</h2>
-			<p><img src="images/blankPic.png" alt="" />
-			<form class="form1" method="post" action="entrar.php">
-				<p><i>Los Campos son obligados</i></p>
-				Usuario<input name="name" type="text" /><br>
-				Contraseña<input name="id" type="text" />
-				<input name="" type="submit" value="Entrar" />
-			</form>
-		</div>
+		<?php 
+			if(!($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null)){
+				echo "<div class=smallWrap>	
+						<h2>Entrar</h2>
+						<p><img src=../images/blankPic.png alt=icono />
+						<form class=form1 method=post action=entrar.php>
+							<p><i>Los Campos son obligados</i></p>
+							Usuario<input name=name type=text /><br>
+							Contraseña<input name=id type=text />
+							<input name=btnEn type=submit value=Entrar />
+						</form>
+					</div>";
+				}
+			else{
+				echo "<div class=smallWrap>	
+						<h2>Salir</h2>
+						<p><img src=../images/blankPic.png alt=icono />
+						<form class=form1 method=post action=salir.php>
+							<input name=btnS type=submit value=Salir />
+						</form>
+					</div>";
+				
+				}
+	?>
+
 		
 	
 		<hr />
