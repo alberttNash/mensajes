@@ -58,21 +58,24 @@ function mensajes_respuesta($padre,$link){
 	
 }
 function ver_tipo_usuario($con){
+	
 	$query="select * from tipo_usuario";
-	if (!$resultado=mysqli_query($con,$query)) {echo "Error". mysqli_error($con);}
+	if (!$resultado=mysqli_query($con,$query)) {
+		echo "Error". mysqli_error($con);
+	}
 	else{
 	
-	while($muestra=mysqli_fetch_array($resultado)){
-		echo "".utf8_encode($muestra['descripcion'])."
-		<a href='eliminar_tipo_usuario.php?id_eliminar=".$muestra['id_tipo_usuario']."'>eliminar</a></br></span>";
-	}
+		while($muestra=mysqli_fetch_array($resultado)){
+			echo "".utf8_encode($muestra['descripcion'])."
+			<a href='eliminar_tipo_usuario.php?id_eliminar=".$muestra['id_tipo_usuario']."'>eliminar</a></br></span>";
+		}
 
 	}
 
 }
 
 function validar(){
-	print_r($_SESSION['login']);
+	//print_r($_SESSION['login']);
 	echo "<br>";
 	if(!$_SESSION['login']){
 		header("location:sinacceso.php");
@@ -83,7 +86,7 @@ function validar(){
 }
 
 function validar_index(){
-	print_r($_SESSION['login']);
+	//print_r($_SESSION['login']);
 	echo "<br>";
 	if(!$_SESSION['login']){
 		header("location:php/sinacceso.php");
@@ -92,6 +95,13 @@ function validar_index(){
 		return true;
 	}
 }
+
+function validar_privilegios(){
+	if($_SESSION['id_usuario']==1){
+		return true;
+	}
+}
+
 function salir(){
 	session_destroy();	
 }

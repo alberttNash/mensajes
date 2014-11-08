@@ -17,6 +17,12 @@
 	<div class="centerAlign">
 		<a href="#" class="logo"></a>
 		
+		<div class="smallWrap2">
+			<form class='form1' method='post' action='php/salir.php'>
+				<input name='btnS' type='submit' value='Cerrar Sesión' />
+			</form>
+		</div>
+		
 		<ul id="menu">
 			<li><a href="index.php">Inicio</a></li>
 			<li><a href="php/vermensajes.php">Mensajes</a></li>
@@ -43,12 +49,6 @@
 			?>
 			<a href="php/vermensajes.php" class="view">Ver más</a>
 		</div>
-		<div class="smallWrap">
-			<h2>Notas externas</h2>
-			<p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
-			<p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
-			<a href="#" class="view">Más</a>
-		</div>
 		<!--
 		<div class="smallWrap">	
 						<h2>Entrar</h2>
@@ -62,7 +62,7 @@
 		</div>-->
 		
 		<?php 
-			if(!(($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null))){
+			/*if(!(($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null))){
 				echo "<div class=smallWrap>	
 						<h2>Entrar</h2>
 						<p><img src=images/blankPic.png alt=icono />
@@ -83,8 +83,23 @@
 						</form>
 					</div>";
 				
-				}
-	?>
+				}*/
+			
+			
+			echo"<div class=smallWrap>
+				<h2>Administración de la base de datos</h2>
+				<p><img src=images/blankPic.png alt=blanc /></p>
+				<p></p>
+				<a href=php/administrarbd.php class=view> Más </a>
+			</div>";
+		?>
+		
+		<div class="smallWrap">
+		   <h2>Notas externas</h2>
+		   <p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
+		   <p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
+		   
+		</div>
 
 		
 		<hr />

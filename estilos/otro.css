@@ -610,3 +610,13 @@ ul#topnav span{ /*--Default state of navigation--*/
 	color: #747373;
 	background:none;
 }
+
+#boton_salir{
+	margin-top: 0px;
+	position:absolute;
+	width:100%;
+}
+#boton_salir form{
+	margin-left: 600px;
+	
+}

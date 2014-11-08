@@ -55,20 +55,9 @@
 			<a href="vermensajes.php" class="view">Ver más</a>
 		</div>
 		
-		<!--
-		<div class="smallWrap">
-			<h2>Entrar</h2>
-			<p><img src="images/blankPic.png" alt="" />
-			<form class="form1" method="post" action="entrar.php?origen=sinacceso.php">
-				<p><i>Los Campos son obligados</i></p>
-				Usuario<input name="name" type="text" /><br>
-				Contraseña<input name="id" type="password" />
-				<input name="login" type="submit" value="Entrar" />
-			</form>
-		</div>-->
 		<?php 
 			
-			if(!(($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null))){
+			if(!((isset($_SESSION['login']) and($_SESSION['login']==true)) and ($_SESSION['id_usuario']!=null))){
 				//print_r($_SESSION);
 				echo "<div class=smallWrap>	
 						<h2>Entrar</h2>
@@ -79,8 +68,8 @@
 							Contraseña<input name=id type=password />
 							<input name=btnEn type=submit value=Entrar />
 						</form>
-					</div>";
-				}
+						</div>";
+			}
 			else{
 				//print_r($_SESSION);
 				echo "<div class=smallWrap>	
@@ -89,10 +78,17 @@
 						<form class=form1 method=post action=salir.php>
 							<input name=btnS type=submit value=Salir />
 						</form>
-					</div>";
+						</div>";
 				
-				}
-	?>
+			}
+		?>
+		
+		<div class="smallWrap">
+		   <h2>Notas externas</h2>
+		   <p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
+		   <p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
+		   
+		</div>
 
 		<hr />
 		<p class="copy">© Copyright Información.<br /></p>
