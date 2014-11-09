@@ -30,7 +30,7 @@
   <p class="t1">"La Tierra <span>será </span> como sean los hombres."</p>
   
   <div class="smallWrap first">
-   <h2>Mensajes Recientes</h2>
+   <h2>Respuestas</h2>
    <p><img src="images/blankPic.png" alt="" />
 	<?php 
 		validar();

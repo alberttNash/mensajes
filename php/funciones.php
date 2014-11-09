@@ -84,6 +84,12 @@ function ver_tipo_usuario($con){
 
 }
 
+function update_tipo_usr($con, $id_tipo_usuario){
+	$query = "select * from tipo_usuario where id_tipo_usuario='".$id_tipo_usuario."'";
+	$resultado = mysqli_query($con, $query);
+	return $resultado;
+}
+
 function validar(){
 	//print_r($_SESSION['login']);
 	echo "<br>";
@@ -114,4 +120,27 @@ function validar_privilegios(){
 
 function salir(){
 	session_destroy();	
+}
+
+function update_catalogo($con,$catalogo,$valor){
+	if($catalogo=='tipo_usuario'){
+		echo $query="insert into ".$catalogo." (id_tipo_usuario,descripcion) values (NULL,'".$valor."')";
+	}
+	else{
+		if($catalogo=='categorias'){
+			echo $query="insert into ".$catalogo." (id_categoria,descripcion) values (NULL,'".$valor."')";
+		}
+		else{
+			if($catalogo=='status'){
+				echo $query="insert into ".$catalogo." (id_status,descripcion) values (NULL,'".$valor."')";
+			}
+			else{
+				echo $query="insert into ".$catalogo." (id_status_msg,descripcion) values (NULL,'".$valor."')";
+			}
+		}
+	}
+	
+	if(!$resultado=mysqli_query($con, $query)) {
+		echo "Error".mysqli_error($con);
+	}
 }
