@@ -23,17 +23,19 @@ function mostrar_mensajes_inicio($con){
 	}}
 
 function mostrar_mensajes($con){
-	$query="select * from mensajes where id_padre='0' order by id_mensaje desc";
+	$query="select * from mensajes where id_usuario='".$_SESSION['id_usuario']."' order by id_mensaje desc";
 	
 	if (!$resultado=mysqli_query($con,$query)) {echo "Error". mysqli_error($con);}
 	else{
 	
 	while($muestra=mysqli_fetch_array($resultado)){
+		echo "<br>*******************************************************************************************************************************************<br>";
 		echo "<span class='marker'>Tema:".$muestra['asunto']."<br/></span>";
-		echo "".utf8_encode($muestra['descripcion'])."<a href='contesta_mensaje.php?id_padre=".$muestra['id_mensaje']."'> Contestar</a>
-			 <br><a href='ver_respuesta_mensaje.php?id=".$muestra['id_mensaje']."'> Ver respuestas</a>
-			 <br><a href='#'> Eliminar</a>
-			 <br><a href='#'> Modificar</a>";
+		echo "".utf8_encode($muestra['descripcion']).
+			 "<br><a href='contesta_mensaje.php?id_padre=".$muestra['id_mensaje']."'> Contestar </a>
+			 <a href='ver_respuesta_mensaje.php?id=".$muestra['id_mensaje']."'> Ver respuestas </a>
+			 <a href='#'> Eliminar </a>
+			 <a href='#'> Modificar </a>";
 		//mensajes_respuesta($muestra['id_mensaje'],$con);
 	}
 
@@ -43,14 +45,21 @@ function mostrar_mensajes($con){
 }
 function mensajes_respuesta($padre,$link){
 	
-	$query="select * from mensajes where id_padre='".$padre."'";
+	$query="select m.descripcion, m.id_mensaje, u.nombre_corto from mensajes as m, usuarios as u 
+			where m.id_padre='".$padre."' and m.id_usuario = u.id_usuario";
 	
-	if (!$resultado=mysqli_query($link,$query)) {echo "Error". mysqli_error($link);}
+	if (!$resultado=mysqli_query($link,$query)) {
+		echo "Error". mysqli_error($link);
+	}
+	
 	else{
 	
-	while($muestra=mysqli_fetch_array($resultado)){
-		echo "".utf8_encode($muestra['descripcion'])."<br><a href='contesta_mensaje.php?id_padre=".$muestra['id_mensaje']."'> Contestar</a></br></span>";
-	}
+		while($muestra=mysqli_fetch_array($resultado)){
+			echo "<br>*******************************************************************************************************************************************<br>";
+			echo "".utf8_encode($muestra['descripcion'])."<br>escrito por: ".$muestra['nombre_corto'].
+				" <br><a href='contesta_mensaje.php?id_padre=".$muestra['id_mensaje']."'> Contestar</a></br></span>";
+				
+		}
 
 	}
 
@@ -67,7 +76,8 @@ function ver_tipo_usuario($con){
 	
 		while($muestra=mysqli_fetch_array($resultado)){
 			echo "".utf8_encode($muestra['descripcion'])."
-			<a href='eliminar_tipo_usuario.php?id_eliminar=".$muestra['id_tipo_usuario']."'>eliminar</a></br></span>";
+			<br><a href='eliminar_tipo_usuario.php?id_eliminar=".$muestra['id_tipo_usuario']."'>eliminar</a>
+			<a href='modificar_tipo_usuario.php?id_modificar=".$muestra['id_tipo_usuario']."'>modificar</a><br>";
 		}
 
 	}

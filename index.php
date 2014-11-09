@@ -22,6 +22,11 @@
 				<input name='btnS' type='submit' value='Cerrar Sesión' />
 			</form>
 		</div>
+		<div class="smallWrap2">
+			<form class='form1' method='post' action='php/salir.php'>
+				<input name='btnS' type='submit' value='Perfil' />
+			</form>
+		</div>
 		
 		<ul id="menu">
 			<li><a href="index.php">Inicio</a></li>

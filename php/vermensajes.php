@@ -16,6 +16,19 @@
 	<div class="centerAlign">
 		<a href="#" class="logo"></a>
 		
+		
+		<div class="smallWrap2">
+			<form class='form1' method='post' action='salir.php'>
+				<input name='btnS' type='submit' value='Cerrar Sesión' />
+			</form>
+		</div>
+		<div class="smallWrap2">
+			<form class='form1' method='post' action='salir.php'>
+				<input name='btnS' type='submit' value='Perfil' />
+			</form>
+		</div>
+		
+		
 		<ul id="menu">
 			<li><a href="../index.php">Inicio</a></li>
 			<li><a href="vermensajes.php">Mensajes</a></li>
@@ -39,7 +52,7 @@
    
 		</div>
   
-		<?php 
+		<?php /*
 			if(!($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null)){
 				echo "<div class=smallWrap>	
 						<h2>Entrar</h2>
@@ -61,8 +74,8 @@
 						</form>
 					</div>";
 				
-				}
-	?>
+				}*/
+		?>
 
 		
 	

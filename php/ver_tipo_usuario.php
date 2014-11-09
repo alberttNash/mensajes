@@ -38,24 +38,16 @@
 				validar();
 				ver_tipo_usuario($con);
 			?>
-			<a href="php/vermensajes.php" class="view">Ver más</a>
+			
 		</div>
 		<div class="smallWrap">
 			<h2>Notas externas</h2>
 			<p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
 			<p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
-			<a href="#" class="view">Más</a>
+			
 		</div>
-		<div class="smallWrap">
-			<h2>Entrar</h2>
-			<p><img src="images/blankPic.png" alt="" />
-			<form class="form1" method="post" action="entrar.php">
-				<p><i>Los Campos son obligados</i></p>
-				Usuario<input name="name" type="text" /><br>
-				Contraseña<input name="id" type="text" />
-				<input name="" type="submit" value="Entrar" />
-			</form>
-		</div>
+		
+		
 		<hr />
 		<p class="copy">© Copyright Información.<br /></p>
 		<ul class="foot">

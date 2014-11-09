@@ -24,9 +24,9 @@
 			</form>
 		</div>
 		
-		<div class="smallWrap">	
-			<form class='form1' method='post' action='../index.php'>
-				<input name='back' type='submit' value='Regresar' />
+		<div class="smallWrap2">
+			<form class='form1' method='post' action='salir.php'>
+				<input name='btnS' type='submit' value='Perfil' />
 			</form>
 		</div>
 		

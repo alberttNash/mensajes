@@ -19,7 +19,7 @@
   
   <ul id="menu">
    <li><a href="../index.html">Inicio</a></li>
-   <li><a href="php/vermensajes.php">Mensajes</a></li>
+   <li><a href="vermensajes.php">Mensajes</a></li>
    <li><a href="#">Eventos</a></li>
    <li><a href="#">Ligas</a></li>
    <li class="ml"><a href="http://www.Sisteqmas.html">Sistqmas</a></li>
@@ -33,27 +33,35 @@
   <div class="smallWrap first">
    <h2>Contesta Mensaje</h2>
    <?php
-   validar();
-   if(!isset($_POST['btn_contesta'])) {
-		$id=$_GET['id_padre'];
-		echo "<form name='contesta_mensaje' action='contesta_mensaje.php' method='post'>
-		<input type='hidden' name='id_padre' value='".$id."'>
-		<textarea name='form_mensaje_respuesta' col='50' rows='5'>Mensaje
-		</textarea>
-		<input type='submit' name='btn_contesta' value='Contestar'>
-</form>"; ;
-	}else {
-		$id=$_POST['id_padre'];
-		
-		
-		
-		$query="INSERT INTO mensajes (id_mensaje, id_padre,asunto,id_usuario,descripcion,id_categoria,fecha_publicacion) 
-		VALUES (NULL, '".$id."', 'REspuesta', '1', '".$_POST['form_mensaje_respuesta']."', '2', '2014-10-22');";
-		if(!$resultado=mysqli_query($con, $query)) {echo "Error".mysqli_error($con);} else{
-				
+	   validar();
+	   if(!isset($_POST['btn_contesta'])) {
+			$id=$_GET['id_padre'];
+			$query="select asunto from mensajes where id_mensaje='".$id."'";
+			$resultado=mysqli_query($con,$query);
+			
+			echo "<form name='contesta_mensaje' action='contesta_mensaje.php' method='post'>
+			<input type='hidden' name='id_padre' value='".$id."'><br>
+			Asunto: <input name='asunto' type='text' value='RE:'><br>
+			<textarea name='form_mensaje_respuesta' col='50' rows='5'>Mensaje
+			</textarea><br>
+			<input type='submit' name='btn_contesta' value='Contestar'>
+			</form>"; ;
+		}
+		else {
+			$id=$_POST['id_padre'];
+
+			$query="INSERT INTO mensajes (id_mensaje, id_padre,asunto,id_usuario,descripcion,id_categoria,fecha_publicacion,id_status_msg) 
+			VALUES (NULL, '".$id."', '".$_POST['asunto']."', '".$_SESSION['id_usuario']."', '".$_POST['form_mensaje_respuesta']."', '2', '2014-10-22','1');";
+			
+			if(!$resultado=mysqli_query($con, $query)) {
+				echo "Error".mysqli_error($con);
+			} 
+			
+			else{
 				header('Location: /mensajes/php/vermensajes.php');
-				
-			echo "<a href='vermensajes.php'>Regresar</a>";}	}?>
+				echo "<a href='vermensajes.php'>Regresar</a>";}	
+			}
+	?>
   </div>
   
   
