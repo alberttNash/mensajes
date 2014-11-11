@@ -54,8 +54,8 @@
 				echo "<div class=smallWrap>	
 					<h2>Usuarios</h2>
 					<p><img src=../images/blankPic.png alt=icono />
-					<form class=form1 method=post action=ver_tipo_usuario.php>
-						<input name=tipousr type=submit value='Ver Tabla' />
+					<form class=form1 method=post action=ver_usuarios.php>
+						<input name=user type=submit value='Ver Tabla' />
 					</form>
 				</div>";
 	
@@ -70,31 +70,31 @@
 				echo "<div class=smallWrap>	
 					<h2>Status</h2>
 					<p><img src=../images/blankPic.png alt=icono />
-					<form class=form1 method=post action=ver_tipo_usuario.php>
-						<input name=tipousr type=submit value='Ver Tabla' />
+					<form class=form1 method=post action=ver_status.php>
+						<input name=status type=submit value='Ver Tabla' />
 					</form>
 				</div>";
 				
 				echo "<div class=smallWrap>	
 					<h2>Mensajes</h2>
 					<p><img src=../images/blankPic.png alt=icono />
-					<form class=form1 method=post action=ver_tipo_usuario.php>
-						<input name=tipousr type=submit value='Ver Tabla' />
+					<form class=form1 method=post action=admin_mensajes.php>
+						<input name=mensajes type=submit value='Ver Tabla' />
 					</form>
 				</div>";
 				
 				echo "<div class=smallWrap>	
 					<h2>Categorias</h2>
 					<p><img src=../images/blankPic.png alt=icono />
-					<form class=form1 method=post action=ver_tipo_usuario.php>
-						<input name=tipousr type=submit value='Ver Tabla' />
+					<form class=form1 method=post action=ver_categorias.php>
+						<input name=categorias type=submit value='Ver Tabla' />
 					</form>
 				</div>";
 				
 				echo "<div class=smallWrap>	
 					<h2>Status de mensaje</h2>
 					<p><img src=../images/blankPic.png alt=icono />
-					<form class=form1 method=post action=ver_tipo_usuario.php>
+					<form class=form1 method=post action=ver_status_mensaje.php>
 						<input name=tipousr type=submit value='Ver Tabla' />
 					</form>
 				</div>";

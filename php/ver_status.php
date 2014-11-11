@@ -44,7 +44,7 @@
 			<?php 
 				validar();
 				if(validar_privilegios()){
-					ver_tipo_usuario($con);
+					ver_status($con);
 				}
 				else{
 					echo "<h1>No cuenta con los privilegios necesarios para ver este contenido</h1>";
@@ -58,7 +58,7 @@
 			<p><img src="images/blankPic.png" alt="" /></p>
 			
 			
-			<form name='nuevo_registro' method='post' action='nuevo_registro_catalogo.php?catalogo=usrtype'>
+			<form name='nuevo_registro' method='post' action='nuevo_registro_catalogo.php?catalogo=status'>
 				Descripcion: <input name='descripcion' type='text'><br>
 				<input name='btn_crear' type='submit' value='Crear'>
 			</form>

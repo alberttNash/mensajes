@@ -16,13 +16,6 @@
 <body>
 	<div class="centerAlign">
 		<a href="#" class="logo"></a>
-		
-		<div class="smallWrap">
-			<form class='form1' method='post' action='administrarbd.php'>
-				<input name='btnS' type='submit' value='Atrás' />
-			</form>
-		</div>
-		
   
 		<ul id="menu">
 			<li><a href="../index.php">Inicio</a></li>
@@ -39,31 +32,50 @@
 		<a href="#" class="dl"></a>
 		<hr />
 		<div class="smallWrap first">
-			<h2>Registros Actuales</h2>
+			<h2>Modificar Campo</h2>
 			<p><img src="images/blankPic.png" alt="" />
 			<?php 
 				validar();
 				if(validar_privilegios()){
-					ver_tipo_usuario($con);
+					if(!isset($_POST['modificar'])){
+						
+						$select = update_statusm($con,$_GET['id_modificar']);
+						while($muestra = mysqli_fetch_array($select)){
+							echo "<form name='formulario_modificar' action='modificar_status_msg.php' method='post'>
+								<input type='hidden' name='id_statusm' value='".$_GET['id_modificar']."'><br>
+								Valor Anterior: ".$muestra['descripcion']." <br><br>
+								Valor Nuevo: <input name='descripcion' type='text'><br>
+								<input type='submit' name='modificar' value='Actualizar'>
+								</form>"; ;
+						}
+					}
+					else{
+						$query = "update status_mensaje set descripcion='".$_POST['descripcion']."' where id_status_msg='".$_POST['id_statusm']."'";
+						if(!$resultado=mysqli_query($con, $query)) {
+							echo "Error".mysqli_error($con);
+						} 
+			
+						else{
+							header('Location: /mensajes/php/ver_status_mensaje.php');
+							echo "<a href='ver_status_mensaje.php'>Regresar</a>";
+						}	
+					}
+					
 				}
 				else{
-					echo "<h1>No cuenta con los privilegios necesarios para ver este contenido</h1>";
+					echo "<h2>No Cuenta con los privilegios suficientes</h2>";
 				}
 				
 			?>
 			
 		</div>
 		<div class="smallWrap">
-			<h2>Agregar Nuevo Registro</h2>
-			<p><img src="images/blankPic.png" alt="" /></p>
-			
-			
-			<form name='nuevo_registro' method='post' action='nuevo_registro_catalogo.php?catalogo=usrtype'>
-				Descripcion: <input name='descripcion' type='text'><br>
-				<input name='btn_crear' type='submit' value='Crear'>
-			</form>
+			<h2>Notas externas</h2>
+			<p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
+			<p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
 			
 		</div>
+		
 		
 		<hr />
 		<p class="copy">© Copyright Información.<br /></p>

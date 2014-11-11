@@ -16,24 +16,24 @@
 		}
 		if($_GET['catalogo']=='categorias'){
 			if($_POST['descripcion']!=null){
-				$catalogo="tipo_usuario";
+				$catalogo="categorias";
 				update_catalogo($con,$catalogo,$_POST['descripcion']);
 			}
-			header("location: ver_tipo_usuario.php");
+			header("location: ver_categorias.php");
 		}
 		if($_GET['catalogo']=='status'){
 			if($_POST['descripcion']!=null){
-				$catalogo="tipo_usuario";
+				$catalogo="status";
 				update_catalogo($con,$catalogo,$_POST['descripcion']);
 			}
-			header("location: ver_tipo_usuario.php");
+			header("location: ver_status.php");
 		}
 		if($_GET['catalogo']=='statusm'){
 			if($_POST['descripcion']!=null){
-				$catalogo="tipo_usuario";
+				$catalogo="status_mensaje";
 				update_catalogo($con,$catalogo,$_POST['descripcion']);
 			}
-			header("location: ver_tipo_usuario.php");
+			header("location: ver_status_mensaje.php");
 		}
 		
 	}
