@@ -9,7 +9,7 @@ function conectar(){
 }
 
 function mostrar_mensajes_inicio($con){
-	$query="select * from mensajes where id_padre='0' order by id_mensaje desc limit 5";
+	$query="select * from mensajes where id_padre='0' and id_status_msg!='2' order by id_mensaje desc limit 5";
 	
 	if (!$resultado=mysqli_query($con,$query)) {echo "Error". mysqli_error($con);}
 	else{
@@ -23,7 +23,7 @@ function mostrar_mensajes_inicio($con){
 	}}
 
 function mostrar_mensajes($con){
-	$query="select * from mensajes where id_usuario='".$_SESSION['id_usuario']."' order by id_mensaje desc";
+	$query="select * from mensajes where id_usuario='".$_SESSION['id_usuario']."' and id_status_msg!='2' order by id_mensaje desc";
 	
 	if (!$resultado=mysqli_query($con,$query)) {echo "Error". mysqli_error($con);}
 	else{
@@ -280,4 +280,9 @@ function update_catalogo($con,$catalogo,$valor){
 	if(!$resultado=mysqli_query($con, $query)) {
 		echo "Error".mysqli_error($con);
 	}
+}
+
+function redireccion($origen){
+
+	header("'Location: ".$origen.".php'");
 }

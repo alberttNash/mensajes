@@ -21,6 +21,7 @@
 				<input name='btnS' type='submit' value='Cerrar Sesión' />
 			</form>
 		</div>
+		
   
 		<ul id="menu">
 			<li><a href="../index.php">Inicio</a></li>
@@ -37,50 +38,47 @@
 		<a href="#" class="dl"></a>
 		<hr />
 		<div class="smallWrap first">
-			<h2>Modificar Campo</h2>
-			<p><img src="images/blankPic.png" alt="" />
+			<h2>Datos de Perfil</h2>
+			
 			<?php 
 				validar();
-				if(validar_privilegios()){
-					if(!isset($_POST['modificar'])){
 						
-						$select = update_status($con,$_GET['id_modificar']);
-						while($muestra = mysqli_fetch_array($select)){
-							echo "<form name='formulario_modificar' action='modificar_status.php' method='post'>
-								<input type='hidden' name='id_status' value='".$_GET['id_modificar']."'><br>
-								Valor Anterior: ".$muestra['descripcion']." <br><br>
-								Valor Nuevo: <input name='descripcion' type='text'><br>
-								<input type='submit' name='modificar' value='Actualizar'>
-								</form>"; ;
-						}
-					}
-					else{
-						$query = "update status set descripcion='".$_POST['descripcion']."' where id_status='".$_POST['id_status']."'";
-						if(!$resultado=mysqli_query($con, $query)) {
-							echo "Error".mysqli_error($con);
-						} 
-			
-						else{
-							header('Location: /mensajes/php/ver_status.php');
-							echo "<a href='ver_status.php'>Regresar</a>";
-						}	
-					}
-					
-				}
-				else{
-					echo "<h2>No Cuenta con los privilegios suficientes</h2>";
-					echo "<a href='ver_status.php'>Regresar</a>";
-				}
+							$select = update_usuario($con,$_SESSION['id_usuario']);
+							
+							while($muestra = mysqli_fetch_array($select)){
+								echo "<div class=smallWrap>
+									
+										<br>Nombre Corto: ".$muestra['nombre_corto']."
+										<br>Nombre Largo: ".$muestra['nombre_largo']."
+										
+										<br>Correo: ".$muestra['correo_e']."
+									</div>";
+							}
+							
+				echo "<div class=smallWrap>
+						<h2>Editar Perfil</h2>
+						<form name='nuevo_registro' method='post' action='modificar_usuario.php?id_usuario=".$_SESSION['id_usuario']."&origen=perfil'>
+							<input name='editar' type='submit' value='Editar'>
+						</form></div>";
+						
+				echo "<div class=smallWrap>
+						<h2>Darme de Baja</h2>
+						<form name='nuevo_registro' method='post' action='eliminar_usuario.php?id_usuario=".$_SESSION['id_usuario']."&origen=perfil'>
+							<input name='Eliminar' type='submit' value='Eliminar'>
+						</form></div>";
+						
+
 				
 			?>
 			
 		</div>
 		<div class="smallWrap">
 			<h2>Notas externas</h2>
-			<p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
+			<p><img src="../images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
 			<p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
 			
 		</div>
+		
 		
 		
 		<hr />

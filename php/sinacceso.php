@@ -33,7 +33,7 @@
 		<hr />
 		<div class="smallWrap first">
 			<h2>Mensajes Recientes</h2>
-			<p><img src="images/blankPic.png" alt="" />
+			<p><img src="../images/blankPic.png" alt="" />
 			<?php 
 			
 				if( isset($_GET['autenticado']) and $_GET['autenticado']=='0'){
@@ -84,10 +84,11 @@
 		?>
 		
 		<div class="smallWrap">
-		   <h2>Notas externas</h2>
-		   <p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
-		   <p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
-		   
+		   <h2>¿Nuevo en el sitio?</h2>
+		   <p><img src="../images/blankPic.png" alt="" /><h3>Registrate</h3></p>	   
+		   <form name='nuevo_registro' method='post' action='nuevo_usuario.php?origen=..'>
+				<input name='btn_crear' type='submit' value='Registrar'>
+			</form>
 		</div>
 
 		<hr />

@@ -16,6 +16,12 @@
 <body>
 	<div class="centerAlign">
 		<a href="#" class="logo"></a>
+		<div class="smallWrap2">
+			<form class='form1' method='post' action='salir.php'>
+				<input name='btnS' type='submit' value='Cerrar Sesión' />
+			</form>
+		</div>
+		
   
 		<ul id="menu">
 			<li><a href="../index.php">Inicio</a></li>
@@ -36,38 +42,64 @@
 			<p><img src="images/blankPic.png" alt="" />
 			<?php 
 				validar();
-				if(validar_privilegios()){
+				
 					if(!isset($_POST['modificar'])){
 						if( $_GET['id_usuario']==$_SESSION['id_usuario'] or $_SESSION['id_usuario']==1){
 							$select = update_usuario($con,$_GET['id_usuario']);
-							//if (SESSION['id_usuario']==1)
-							while($muestra = mysqli_fetch_array($select)){
-								echo "<div class=smallWrap>
-									<h2>Valores Anteriores</h2>
-										<br>Nombre Corto: ".$muestra['nombre_corto']."
-										<br>Nombre Largo: ".$muestra['nombre_largo']."
-										<br>Contraseña: ".md5($muestra['contrasena'])."
-										<br>Id tipo usuario: ".$muestra['id_tipo_usuario']."
-										<br>Id Status: ".$muestra['id_status']."
-										<br>Correo: ".$muestra['correo_e']."
-									</div>";
-								echo "<div class=smallWrap>
-									<h2>Valores Nuevos</h2>";
-								echo "<form name='formulario_modificar' action='modificar_usuario.php' method='post'>
-										Todos Los Campos Son obligatorios<br>
-										<input type='hidden' name='id_user' value='".$_GET['id_usuario']."'><br>
-										<input type='hidden' name='origen' value='".$_GET['origen']."'><br>
-										Nombre Corto Nuevo: <input name='nombre_corto' type='text'><br><br>
-										Nombre Largo Nuevo: <input name='nombre_largo' type='text'><br><br>
-										Contraseña Nueva: <input name='contrasena' type='text'><br><br>
-										ID Tipo Usuario Nuevo: <input name='id_tipo_usuario' type='text'><br><br>
-										ID Status Nuevo: <input name='id_status' type='text'><br><br>
-										Correo Nuevo: <input name='correo_e' type='text'><br><br>
-										<input type='submit' name='modificar' value='Actualizar'>
-									</form>"; 
-								echo "</div>";
+							if ($_SESSION['id_usuario']==1){
+								while($muestra = mysqli_fetch_array($select)){
+									echo "<div class=smallWrap>
+										<h2>Valores Anteriores</h2>
+											<br>Nombre Corto: ".$muestra['nombre_corto']."
+											<br>Nombre Largo: ".$muestra['nombre_largo']."
+											<br>Contraseña: ".md5($muestra['contrasena'])."
+											<br>Id tipo usuario: ".$muestra['id_tipo_usuario']."
+											<br>Id Status: ".$muestra['id_status']."
+											<br>Correo: ".$muestra['correo_e']."
+										</div>";
+									echo "<div class=smallWrap>
+										<h2>Valores Nuevos</h2>";
+									echo "<form name='formulario_modificar' action='modificar_usuario.php' method='post'>
+											Todos Los Campos Son obligatorios<br>
+											<input type='hidden' name='id_user' value='".$_GET['id_usuario']."'><br>
+											<input type='hidden' name='origen' value='".$_GET['origen']."'><br>
+											<input type='hidden' name='alterX' value='1'><br>
+											Nombre Largo Nuevo: <input name='nombre_largo' type='text'><br><br>
+											Contraseña Nueva: <input name='contrasena' type='text'><br><br>
+											ID Tipo Usuario Nuevo: <input name='id_tipo_usuario' type='text'><br><br>
+											ID Status Nuevo: <input name='id_status' type='text'><br><br>
+											Correo Nuevo: <input name='correo_e' type='text'><br><br>
+											<input type='submit' name='modificar' value='Actualizar'>
+										</form>"; 
+									echo "</div>";
+								}
 							}
-							// else usuario registrado 
+							else{
+								while($muestra = mysqli_fetch_array($select)){
+									echo "<div class=smallWrap>
+										<h2>Valores Anteriores</h2>
+											
+											<br>Nombre Largo: ".$muestra['nombre_largo']."
+											<br>Contraseña: ".md5($muestra['contrasena'])."
+											
+											<br>Correo: ".$muestra['correo_e']."
+										</div>";
+									echo "<div class=smallWrap>
+										<h2>Valores Nuevos</h2>";
+									echo "<form name='formulario_modificar' action='modificar_usuario.php' method='post'>
+											Todos Los Campos Son obligatorios<br>
+											<input type='hidden' name='id_user' value='".$_GET['id_usuario']."'><br>
+											<input type='hidden' name='origen' value='".$_GET['origen']."'><br>
+											<input type='hidden' name='alterX' value='2'><br>
+											Nombre Largo Nuevo: <input name='nombre_largo' type='text'><br><br>
+											Contraseña Nueva: <input name='contrasena' type='text'><br><br>
+											Correo Nuevo: <input name='correo_e' type='text'><br><br>
+											<input type='submit' name='modificar' value='Actualizar'>
+										</form>"; 
+									echo "</div>";
+								}
+							
+							}
 						}
 						else{
 							echo "<h1>Necesita Provilegios para modiicar este contenido</h1>";
@@ -75,28 +107,41 @@
 					}
 					else{
 						if( $_POST['id_user']==$_SESSION['id_usuario'] or $_SESSION['id_usuario']==1){
-							//if usuario administrador
-							$query = "update usuarios set nombre_corto='".$_POST['nombre_corto']."', nombre_largo='".$_POST['nombre_largo']."', contrasena='".md5($_POST['contrasena'])."',
-										id_tipo_usuario='".$_POST['id_tipo_usuario']."',id_status='".$_POST['id_status']."', correo_e='".$_POST['correo_e']."' where id_usuario='".$_POST['id_user']."'";
-							if(!$resultado=mysqli_query($con, $query)) {
-								echo "Error".mysqli_error($con);
-							} 
-				
-							else{
-								header('Location: '.$_POST['origen'].".php");
-								echo "<a href='".$_POST['origen'].".php'>Regresar</a>";
+							if($_POST['alterX']==1){
+								$query = "update usuarios set nombre_largo='".$_POST['nombre_largo']."', contrasena='".md5($_POST['contrasena'])."',
+											id_tipo_usuario='".$_POST['id_tipo_usuario']."',id_status='".$_POST['id_status']."', correo_e='".$_POST['correo_e']."' where id_usuario='".$_POST['id_user']."'";
+								if(!$resultado=mysqli_query($con, $query)) {
+									echo "Error".mysqli_error($con);
+								} 
+					
+								else{
+									header('Location: '.$_POST['origen'].".php");
+									echo "<a href='".$_POST['origen'].".php'>Regresar</a>";
+								}
+								
 							}
-							//else usuario registrado
+							else{
+								$query = "update usuarios set nombre_largo='".$_POST['nombre_largo']."', contrasena='".md5($_POST['contrasena'])."',
+											correo_e='".$_POST['correo_e']."' where id_usuario='".$_POST['id_user']."'";
+								if(!$resultado=mysqli_query($con, $query)) {
+									echo "Error".mysqli_error($con);
+								} 
+					
+								else{
+									header('Location: '.$_POST['origen'].".php");
+									echo "<a href='".$_POST['origen'].".php'>Regresar</a>";
+								}
+							
+							}
 						}
 						else{
 							echo "<h1>Necesita Provilegios para modiicar este contenido</h1>";
+									echo "<a href='".$_POST['origen'].".php'>Regresar</a>";
 						}
 					}
 					
-				}
-				else{
-					echo "<h2>No Cuenta con los privilegios suficientes</h2>";
-				}
+				
+				
 				
 			?>
 			

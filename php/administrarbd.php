@@ -25,7 +25,7 @@
 		</div>
 		
 		<div class="smallWrap2">
-			<form class='form1' method='post' action='salir.php'>
+			<form class='form1' method='post' action='perfil.php'>
 				<input name='btnS' type='submit' value='Perfil' />
 			</form>
 		</div>

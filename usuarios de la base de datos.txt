@@ -1,0 +1,5 @@
+Login		contraseña	tipo_usuario
+
+Alberto		password	administrador
+Estela		password	registrado
+Alejandro	pass		registrado

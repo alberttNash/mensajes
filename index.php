@@ -23,7 +23,7 @@
 			</form>
 		</div>
 		<div class="smallWrap2">
-			<form class='form1' method='post' action='php/salir.php'>
+			<form class='form1' method='post' action='php/perfil.php'>
 				<input name='btnS' type='submit' value='Perfil' />
 			</form>
 		</div>

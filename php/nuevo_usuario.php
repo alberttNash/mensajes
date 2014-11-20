@@ -33,7 +33,7 @@
 		<hr />
 		<div class="smallWrap first">
 			<h2>Modificar Campo</h2>
-			<p><img src="images/blankPic.png" alt="" />
+			<p><img src="../images/blankPic.png" alt="" />
 			<?php 
 				validar();
 				if(validar_privilegios()){
@@ -89,7 +89,7 @@
 		</div>
 		<div class="smallWrap">
 			<h2>Notas externas</h2>
-			<p><img src="images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
+			<p><img src="../images/blankPic.png" alt="" />Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
 			<p>Pellentesque nibh tortor, tempor ut congue at, sodales eu nibh. Mauris consectetur luctus ligula, in molestie felis feugiat id. Phasellus iaculis....</p>
 			
 		</div>

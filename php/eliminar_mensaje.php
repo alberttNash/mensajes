@@ -37,7 +37,7 @@
    <?php 
 	   validar();
 	   if( $_GET['id_usuario']==$_SESSION['id_usuario'] or $_SESSION['id_usuario']==1){
-			$query="update mensajes set id_status_msg='2' where id_mensaje=".$_GET['id_mensaje'];
+			$query="update mensajes set id_status_msg='2' where id_mensaje=".$_GET['id_msg'];
 			if (!$resultado=mysqli_query($con,$query)) {echo "Error". mysqli_error($con);}
 		    else{
 			header("location: ".$_GET['origen'].".php");

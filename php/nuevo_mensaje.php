@@ -16,6 +16,7 @@
 <body>
  <div class="centerAlign">
  <a href="#" class="logo"></a>
+ 
  <div class="smallWrap2">
 			<form class='form1' method='post' action='salir.php'>
 				<input name='btnS' type='submit' value='Cerrar Sesión' />
@@ -28,7 +29,7 @@
 		</div>
   
   <ul id="menu">
-   <li><a href="../index.php">Inicio</a></li>
+   <li><a href="../index.html">Inicio</a></li>
    <li><a href="vermensajes.php">Mensajes</a></li>
    <li><a href="#">Eventos</a></li>
    <li><a href="#">Ligas</a></li>
@@ -37,18 +38,43 @@
    <li><a href="http://www.facebook.com/mensajes.itq">Facebook</a></li>
    <li><a href="http://www.titter.com/mensajes.itq">Twitter</a></li>
   </ul>
-  <p class="t1">"La Tierra <span>será </span> como sean los hombres."</p>
-  
+  <p class="t1">"La Tierra será como sean los hombres."</p>
+  <a href="#" class="dl"></a>
+  <hr />
   <div class="smallWrap first">
-   <h2>Respuestas</h2>
-   <p><img src="images/blankPic.png" alt="" />
-	<?php 
-		validar();
-		mensajes_respuesta($_GET['id'],$con);
+   <h2>Nuevo Mensaje</h2>
+   <?php
+	   validar();
+	   if(!isset($_POST['btn_contesta'])) {
+			
+			
+			
+			echo "<form name='contesta_mensaje' action='nuevo_mensaje.php' method='post'>
+			<input type='hidden' name='id_padre' value='".$_GET['origen']."'><br>
+			Asunto: <input name='asunto' type='text':'><br>
+			<textarea name='form_mensaje' col='50' rows='5'>Mensaje
+			</textarea><br>
+			<input type='submit' name='btn_contesta' value='Contestar'>
+			</form>"; ;
+		}
+		else {
+			
+			
+			$query="INSERT INTO mensajes (id_mensaje, id_padre,asunto,id_usuario,descripcion,id_categoria,fecha_publicacion,id_status_msg) 
+			VALUES (NULL, '0','".$_POST['asunto']."', '".$_SESSION['id_usuario']."', '".$_POST['form_mensaje']."', '1', CURDATE(),'1');";
+			
+			if(!$resultado=mysqli_query($con, $query)) {
+				echo "Error".mysqli_error($con);
+			} 
+			
+			else{
+				header("location: ".$origen.".php");
+			}
+		}
 	?>
-   
   </div>
- 
+  
+  
   <hr />
   <p class="copy">© Copyright Información.<br /></p>
   <ul class="foot">

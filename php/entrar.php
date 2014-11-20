@@ -13,12 +13,22 @@
 				}
 				else{
 					$muestra = mysqli_fetch_array($resultado);
-					$_SESSION['login']=true;
-					$_SESSION['nombre_largo']=$muestra['nombre_largo'];
-					$_SESSION['nombre_corto']=$muestra['nombre_corto'];
-					$_SESSION['tipo_usuario']=$muestra['id_tipo_usuario'];
-					$_SESSION['id_usuario']=$muestra['id_usuario'];
-					$autenticado = 1;
+					if($muestra['id_status']!=3){
+						$_SESSION['login']=true;
+						$_SESSION['nombre_largo']=$muestra['nombre_largo'];
+						$_SESSION['nombre_corto']=$muestra['nombre_corto'];
+						$_SESSION['tipo_usuario']=$muestra['id_tipo_usuario'];
+						$_SESSION['id_usuario']=$muestra['id_usuario'];
+						$autenticado = 1;
+					}
+					else{
+						$_SESSION['login']=false;
+						$_SESSION['id_usuario']=null;
+						$_SESSION['nombre_corto']=null;
+						$_SESSION['nombre_largo']=null;
+						$_SESSION['tipo_usuario']=null;
+						$autenticado=0;
+					}
 					//print_r($_SESSION);
 					//echo "Bienvenido ".$_SESSION['nombre_largo'];
 				}

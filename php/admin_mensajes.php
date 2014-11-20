@@ -57,6 +57,18 @@
 			?>
    
 		</div>
+		<hr />
+		
+		<div class="smallWrap first">
+			<h2>Agregar Nuevo Mensaje</h2>
+			<p><img src="images/blankPic.png" alt="" /></p>
+			
+			
+			<form name='nuevo_registro' method='post' action='nuevo_mensaje.php?origen=admin_mensajes'>
+				<input name='btn_crear' type='submit' value='Crear Mensaje'>
+			</form>
+			
+		</div>
   
 		<?php /*
 			if(!($_SESSION['login']==true) and ($_SESSION['id_usuario']!=null)){

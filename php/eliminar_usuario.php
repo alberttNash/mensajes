@@ -38,9 +38,15 @@
 	   validar();
 	   if( $_GET['id_usuario']==$_SESSION['id_usuario'] or $_SESSION['id_usuario']==1){
 			$query="update usuarios set id_status='3' where id_usuario=".$_GET['id_usuario'];
+			
 			if (!$resultado=mysqli_query($con,$query)) {echo "Error". mysqli_error($con);}
 		    else{
-			header("location: ".$_GET['origen'].".php");
+				if(!$_GET['id_usuario']==$_SESSION['id_usuario']){
+					header("location: ".$_GET['origen'].".php");
+				}
+				else{
+					header("location: salir.php");
+				}
 
 		   }
 	   

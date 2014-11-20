@@ -16,6 +16,16 @@
 <body>
  <div class="centerAlign">
  <a href="#" class="logo"></a>
+ <div class="smallWrap2">
+			<form class='form1' method='post' action='salir.php'>
+				<input name='btnS' type='submit' value='Cerrar Sesión' />
+			</form>
+		</div>
+		<div class="smallWrap2">
+			<form class='form1' method='post' action='perfil.php'>
+				<input name='btnS' type='submit' value='Perfil' />
+			</form>
+		</div>
   
   <ul id="menu">
    <li><a href="../index.html">Inicio</a></li>
@@ -51,7 +61,7 @@
 			$id=$_POST['id_padre'];
 
 			$query="INSERT INTO mensajes (id_mensaje, id_padre,asunto,id_usuario,descripcion,id_categoria,fecha_publicacion,id_status_msg) 
-			VALUES (NULL, '".$id."', '".$_POST['asunto']."', '".$_SESSION['id_usuario']."', '".$_POST['form_mensaje_respuesta']."', '2', '2014-10-22','1');";
+			VALUES (NULL, '".$id."', '".$_POST['asunto']."', '".$_SESSION['id_usuario']."', '".$_POST['form_mensaje_respuesta']."', '2', CURDATE(),'1');";
 			
 			if(!$resultado=mysqli_query($con, $query)) {
 				echo "Error".mysqli_error($con);

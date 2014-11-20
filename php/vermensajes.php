@@ -23,7 +23,7 @@
 			</form>
 		</div>
 		<div class="smallWrap2">
-			<form class='form1' method='post' action='salir.php'>
+			<form class='form1' method='post' action='perfil.php'>
 				<input name='btnS' type='submit' value='Perfil' />
 			</form>
 		</div>
@@ -76,8 +76,16 @@
 				
 				}*/
 		?>
-
-		
+		<hr />
+		<div class="smallWrap first">
+			<h2>Agregar Nuevo Mensaje</h2>
+			<p><img src="images/blankPic.png" alt="" /></p>
+			
+			<form name='nuevo_registro' method='post' action='nuevo_mensaje.php?origen=vermensajes'>
+				<input name='btn_crear' type='submit' value='Crear Mensaje'>
+			</form>
+			
+		</div>
 	
 		<hr />
 		
